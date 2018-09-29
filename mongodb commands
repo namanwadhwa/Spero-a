@@ -1,0 +1,81 @@
+//mongod --directoryperdb --dbpath c:\mongodb\data\db --logpath c:\mongodb\log\mongo.log --logappend --rest --install
+
+//mongod --dbpath data
+
+//net start mongodb
+
+//mongo
+
+//use mongo
+
+//mongoimport -d mongo -c positive - -type csv - -file positive.csv -headerline
+
+//mongoimport -d mongo -c negative - -type csv - -file negative.csv -headerline
+
+//show collections
+
+//db.collection.find()
+
+
+db.messages.insert({"comments":"Extremely well organised from day one", "positive": "well organised", "positive": "extremely"})
+ 
+
+//db.positive.find().pretty();
+{ "_id" : ObjectId("5b9b586714cfc1795a920533"), "positive" : "able to achieve" }
+
+
+//mongoexport --db studentdb --collection positive --out positive.json
+
+
+//db.messages.aggregate(
+    [ { $match : { positive : "well organised" } } ]
+);
+
+
+//db.mongo.aggregate([
+   {$match:{positive:"able to achieve"}},
+   {$group:{_id: "$_id",total: {$sum: "$positive"}}}
+   ])
+
+
+
+//db.positive.aggregate( [
+   { $count: "mongo" }
+])
+
+
+//db.collection.aggregate( [
+   { $group: { _id: null, count: { $sum: 1 } } }
+   { $project: { _id: 0 } }
+] )
+
+
+//db.orders.find().count()
+
+//db.collection.drop()
+
+//db.collection.insert(
+   <document or array of documents>,
+   {
+     writeConcern: <document>,
+     ordered: <boolean>
+   }
+)
+
+
+
+//db.collection.save(
+   <document>,
+   {
+     writeConcern: <document>
+   }
+)
+
+ 
+//db.messages.createIndex({"positive":"text"})
+
+//db.messages.find({$text: {$search: "well organised"}}, {score: {$meta: "textScore"}}).sort({score:{$meta:"textScore"}})
+
+//db = connect("localhost:27017/myDatabase")
+
+//mongodb://r1.example.net:27017,r2.example.net:27017/
