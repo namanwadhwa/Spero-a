@@ -1,0 +1,49 @@
+﻿<html>
+<head>
+<title>Arena Login</title>
+    <link href="login.css" rel="stylesheet" />
+    <link href="C:\Users\User\Desktop\login\fontawesome-free-5.2.0-web\css" rel="stylesheet" />
+</head>
+<body>
+
+
+<form name="login">
+
+<div class="container" >
+        <img src="default-user.png" />
+
+
+            <div class="form-input">
+                Username <input type="text" name="userid" placeholder="Enter Deakin ID" required="required" />
+            </div>
+            <div class="form-input">
+                Password <input type="password" name="pswrd" placeholder="Enter Password" required="required" />
+            </div>
+
+
+
+ <input type="button" onclick="check(this.form)" value="Login"/>
+
+
+
+
+<input type="reset" value="Cancel"/>
+</form>
+<script language="javascript">
+function check(form)/*function to check userid & password*/
+{
+ /*the following code checkes whether the entered userid and password are matching*/
+ if(form.userid.value == "sparrow@deakin.edu.au" && form.pswrd.value == "groupa")
+  {
+  
+
+    window.open('uploadFile.html')/*opens the home page while Id & password matches*/
+  }
+ else
+ {
+   alert("Error Password or Username")/*displays error message*/
+  }
+}
+</script>
+</body>
+</html>
