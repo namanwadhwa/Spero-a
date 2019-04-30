@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 23, 2019 at 02:57 PM
+-- Generation Time: Apr 29, 2019 at 10:11 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.4
 
@@ -51,7 +51,22 @@ CREATE TABLE `bridge_table` (
   `course_design_id` int(11) NOT NULL,
   `outcome_id` int(11) NOT NULL,
   `staff_id` int(11) NOT NULL,
-  `support_id` int(11) NOT NULL
+  `support_id` int(11) NOT NULL,
+  `help_improve_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `comments`
+--
+
+CREATE TABLE `comments` (
+  `help_improve_id` int(11) NOT NULL,
+  `comment_id` int(11) NOT NULL,
+  `comment` text NOT NULL,
+  `sentiment_id` int(11) NOT NULL,
+  `sentiment` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -161,7 +176,14 @@ ALTER TABLE `bridge_table`
   ADD KEY `course_design_id` (`course_design_id`),
   ADD KEY `outcome_id` (`outcome_id`),
   ADD KEY `staff_id` (`staff_id`),
-  ADD KEY `support_id` (`support_id`);
+  ADD KEY `support_id` (`support_id`),
+  ADD KEY `help_improve_id` (`help_improve_id`);
+
+--
+-- Indexes for table `comments`
+--
+ALTER TABLE `comments`
+  ADD PRIMARY KEY (`help_improve_id`);
 
 --
 -- Indexes for table `course_design`
@@ -216,6 +238,12 @@ ALTER TABLE `bridge_table`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `comments`
+--
+ALTER TABLE `comments`
+  MODIFY `help_improve_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `course_design`
 --
 ALTER TABLE `course_design`
@@ -267,6 +295,12 @@ ALTER TABLE `assessment`
 ALTER TABLE `bridge_table`
   ADD CONSTRAINT `bridge_table_ibfk_1` FOREIGN KEY (`file_id`) REFERENCES `file` (`file_id`),
   ADD CONSTRAINT `bridge_table_ibfk_2` FOREIGN KEY (`question_id`) REFERENCES `questions` (`question_id`);
+
+--
+-- Constraints for table `comments`
+--
+ALTER TABLE `comments`
+  ADD CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`help_improve_id`) REFERENCES `bridge_table` (`help_improve_id`);
 
 --
 -- Constraints for table `course_design`
